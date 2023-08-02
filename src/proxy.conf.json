@@ -1,0 +1,7 @@
+{
+    "/Image/*": {
+        "target": "https://localhost:7274/Image",
+        "secure": false,
+        "logLevel": "debug"
+    }
+}
