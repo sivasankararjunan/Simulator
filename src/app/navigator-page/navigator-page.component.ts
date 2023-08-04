@@ -19,8 +19,11 @@ export class NavigatorPageComponent {
   imageSource: string = "";
 
   getChartsData() {
-    this.subscription = this.activeRoute.params.subscribe(params => {
-      console.log(params);
+    this.subscription = this.activeRoute.queryParamMap.subscribe(url => {
+      let uid = url.get('uid')
+      if (uid) {
+        this.loadImage(uid);
+      }
     });
   }
 
@@ -32,9 +35,9 @@ export class NavigatorPageComponent {
     // this.loadImage();
     this.getChartsData();
   }
-  async loadImage() {
+  async loadImage(uid: string) {
 
-    this.client.get(`https://localhost:7274/Image/`, { responseType: 'blob' }).subscribe(
+    this.client.get(`https://localhost:7274/Image/${uid}`, { responseType: 'blob' }).subscribe(
       (response) => {
         let imgUrl = URL.createObjectURL(response);
         this.imageSource = imgUrl;

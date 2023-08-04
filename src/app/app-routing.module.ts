@@ -4,6 +4,7 @@ import { AppComponent } from './appComp/app.component';
 import { NavigatorPageComponent } from './navigator-page/navigator-page.component';
 const routes: Routes =
   [
+   {path:'',component:AppComponent },
     { path: 'home', component: AppComponent },
     { path: 'navigator', component: NavigatorPageComponent },];
 
