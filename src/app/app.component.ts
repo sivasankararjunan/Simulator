@@ -1,9 +1,4 @@
 import { Component } from '@angular/core';
-import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { QrCodeModule } from 'ng-qrcode';
-
-
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Component({
@@ -12,6 +7,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  lat: any;
+  lng: any;
   constructor(public client: HttpClient) {
 
   }
@@ -24,12 +21,17 @@ export class AppComponent {
   ];
   imageSource: string = "";
   displayImage: boolean = false;
+  displayImage_QR: boolean = false;
+
   QRSource: string = "";
 
+  public ngOnInit(): void {
+    this.getLocation();
+  }
   async dropdoen_change(x: any) {
 
     if (x.target.value === "Select") {
-      this.displayImage = false;
+      this.displayImage_QR = this.displayImage = false;
     }
     else {
       this.displayImage = true;
@@ -44,9 +46,11 @@ export class AppComponent {
         (response) => {
           let imgUrl = URL.createObjectURL(response);
           this.QRSource = imgUrl;
+          this.displayImage_QR = true;
         },
         (error) => {
           console.log(error.message);
+          this.displayImage_QR = true;
         });
     }
 
@@ -82,5 +86,24 @@ export class AppComponent {
     return new Blob([new Uint8Array(array)], {
       type: 'image/jpg'
     });
+  }
+
+  getLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position: any) => {
+        if (position) {
+          console.log("Latitude: " + position.coords.latitude +
+            "Longitude: " + position.coords.longitude);
+          this.lat = position.coords.latitude;
+          this.lng = position.coords.longitude;
+          console.log(this.lat);
+          console.log(this.lng);
+          
+        }
+      },
+        (error: any) => console.log(error));
+    } else {
+      alert("Geolocation is not supported by this browser.");
+    }
   }
 }

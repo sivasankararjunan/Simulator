@@ -315,9 +315,10 @@
   </select>
 
   <div *ngIf="displayImage">
-    <img [src]="imageSource" />
+    <img [src]="imageSource"/>
+
   </div>
-  <div *ngIf="displayImage">
+  <div *ngIf="displayImage_QR">
     <img style="height:200px;width:200px;" [src]="QRSource" />
   </div>
 </div>
