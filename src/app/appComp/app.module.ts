@@ -6,11 +6,13 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { QrCodeModule } from 'ng-qrcode';
 import { NavigatorPageComponent } from './navigator-page/navigator-page.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavigatorPageComponent
+    NavigatorPageComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
