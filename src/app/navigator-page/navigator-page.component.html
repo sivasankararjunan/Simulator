@@ -292,6 +292,23 @@
             visibility: hidden;
         }
     }
+    .dot {
+        height: 25px;
+        width: 25px;
+        background-color: #9df;
+        border-radius: 50%;
+        text-align: center;
+        display: block;
+        z-index: -1;
+    }
+    .innerdot{
+        background-color: #000aee;
+        height: 10px;
+        width: 10px;
+        border-radius: 50%;
+        display: inline-block;
+        margin-top: 30%;        
+    }
 </style>
 
 
@@ -300,8 +317,10 @@
     <h2>Navigator</h2>
     <p>Navigate yourself to go where</p>
 
-    <div>
-        <img style="height:800px;width:800px;" [src]="imageSource" />
+    <div style="max-height:800px;max-width:800px;position: relative;">
+        <img  [src]="imageSource" />
+        <div class="dot"><div class="innerdot"></div></div>
+        
     </div>
 </div>
 
