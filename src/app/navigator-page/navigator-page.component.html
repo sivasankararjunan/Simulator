@@ -301,8 +301,8 @@
         display: block;
         /* z-index: -1; */
         position:absolute;
-        top:0px;
-        left:500px;
+        /* top:0px;
+        left:500px; */
     }
     .innerdot{
         background-color: #000aee;
@@ -322,7 +322,7 @@
 
     <div style="max-height:800px;max-width:800px;position: relative;">
         <img  [src]="imageSource" style="position: relative; "/>
-        <div class="dot"><div class="innerdot"></div></div>
+        <div class="dot" [ngStyle]="{'top.px':top,'left.px':left}"><div class="innerdot"></div></div>
     </div>
 </div>
 
