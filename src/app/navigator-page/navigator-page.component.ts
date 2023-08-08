@@ -42,7 +42,7 @@ export class NavigatorPageComponent {
     this.getLocation();
     this.slat=this.lat;
     this.sLong=this.lng;
-    this.top=300;
+    this.top=100;
     this.left=60;
     this.s=setInterval(this.PointMotion,2000);
   }
