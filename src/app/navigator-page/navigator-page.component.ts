@@ -42,8 +42,8 @@ export class NavigatorPageComponent {
     this.getLocation();
     this.slat=this.lat;
     this.sLong=this.lng;
-    this.top=100;
-    this.left=60;
+    this.top=225;
+    this.left=110;
     this.s=setInterval(this.PointMotion,2000);
   }
   async loadImage(uid: string) {
