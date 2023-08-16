@@ -13,11 +13,11 @@ export class AppComponent {
 
   }
   title = 'Ingkalocator';
-  options = [
+  options: any = [
     { value: 'select', label: 'Select' },
-    { value: 'Image1.png', label: 'Shop 1' },
-    { value: 'Image2.png', label: 'Shop 2' },
-    { value: 'Image3.png', label: 'Shop 3' }
+    { value: 'Dining.png', label: 'Dining' },
+    { value: 'Kitchen Room.png', label: 'Kitchen Room' },
+    { value: 'Storage Room.png', label: 'Storage Room' }
   ];
   imageSource: string = "";
   displayImage: boolean = false;
@@ -28,17 +28,18 @@ export class AppComponent {
   public ngOnInit(): void {
     this.getLocation();
   }
-  async dropdoen_change(x: any) {
+  async dropdown_change(x: any) {
 
     if (x.target.value === "Select") {
       this.displayImage_QR = this.displayImage = false;
     }
     else {
       this.displayImage = true;
-      this.imageSource = `assets/Images/${x.target.value}`;
-      let imageBlob = await this.toDataURL(this.imageSource)
+      this.imageSource = `assets/Images/Image.png`;
+      let postImageSource = `assets/Images/${x.target.value}`;
+      let imageBlob = await this.toDataURL(postImageSource)
       const imageBlob1 = this.dataURItoBlob(imageBlob);
-      const imageFile1 = new File([imageBlob1], this.imageSource, { type: 'image/png' })
+      const imageFile1 = new File([imageBlob1], postImageSource, { type: 'image/png' })
       let formData = new FormData();
       formData.append('objFile', imageFile1);
 
@@ -98,7 +99,7 @@ export class AppComponent {
           this.lng = position.coords.longitude;
           console.log(this.lat);
           console.log(this.lng);
-          
+
         }
       },
         (error: any) => console.log(error));
